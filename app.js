@@ -204,7 +204,7 @@
       <div class="payment-total-card"><div class="payment-total-label">TOTAL YANG HARUS DIBAYAR</div><div class="payment-total">${rupiah(cartTotal())}</div></div>
       <p class="payment-note">Minta pembeli memasukkan nominal di atas saat scan QRIS statis. Pastikan pembayaran benar-benar berhasil sebelum menekan “Sudah bayar”.</p>
       <div style="height:12px"></div>
-      <div class="qr-card"><img class="qr-image" src="./assets/qris-gend-shop.jpeg" alt="QRIS Gend Shop untuk pembayaran" data-action="zoom-qr"><div class="qr-caption">Gend Shop · QRIS<br>Ketuk gambar untuk memperbesar</div><button class="qr-zoom" data-action="zoom-qr">Perbesar QRIS</button></div>
+      <div class="qr-card"><img class="qr-image" src="./qris-gend-shop.jpeg" alt="QRIS Gend Shop untuk pembayaran" data-action="zoom-qr"><div class="qr-caption">Gend Shop · QRIS<br>Ketuk gambar untuk memperbesar</div><button class="qr-zoom" data-action="zoom-qr">Perbesar QRIS</button></div>
       <div class="payment-actions"><button class="secondary-btn" data-action="back-to-choice">Kembali</button><button class="primary-btn" data-action="complete-payment">Sudah bayar</button></div>`, { summary: false, nav: false });
   }
   function findTransaction(id) { return state.transactions.find((tx) => tx.id === id); }
@@ -243,7 +243,7 @@
     if (document.querySelector('.zoom-overlay')) return;
     const overlay = document.createElement('div');
     overlay.className = 'zoom-overlay';
-    overlay.innerHTML = `<button class="zoom-close" aria-label="Tutup" data-action="close-zoom">×</button><img src="./assets/qris-gend-shop.jpeg" alt="QRIS Gend Shop diperbesar">`;
+    overlay.innerHTML = `<button class="zoom-close" aria-label="Tutup" data-action="close-zoom">×</button><img src="./qris-gend-shop.jpeg" alt="QRIS Gend Shop diperbesar">`;
     document.body.appendChild(overlay);
     overlay.addEventListener('click', (event) => {
       if (event.target === overlay || event.target.closest('[data-action="close-zoom"]')) closeQrZoom();
