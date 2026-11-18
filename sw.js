@@ -1,14 +1,14 @@
-const CACHE_NAME = 'firia-market-day-v1';
+const CACHE_NAME = 'firia-market-day-v2';
 const CORE_ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
   './manifest.webmanifest',
-  './assets/qris-gend-shop.jpeg',
-  './assets/icon-192.png',
-  './assets/icon-512.png',
-  './assets/apple-touch-icon.png'
+  './qris-gend-shop.jpeg',
+'./icon-192.png',
+'./icon-512.png',
+'./apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {
