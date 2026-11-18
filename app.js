@@ -159,7 +159,11 @@
         <div class="history-total">${rupiah(tx.total)}</div>
         <button class="icon-btn" data-action="show-receipt" data-id="${escapeHtml(tx.id)}" aria-label="Lihat bukti">›</button>
       </article>`).join('')}</div>`;
-      content += `<div class="history-tools"><button class="small-btn" data-action="export-csv">Unduh laporan CSV</button><button class="small-btn" data-action="export-backup">Backup data</button></div>`;
+     content += `<div class="history-tools">
+  <button class="small-btn" data-action="export-csv">Unduh laporan CSV</button>
+  <button class="small-btn" data-action="export-backup">Backup data</button>
+  <button class="small-btn" data-action="clear-history">Hapus Semua Riwayat</button>
+</div>`;
     }
     content += `<p class="info-note">Data transaksi tersimpan di browser iPhone ini. Unduh backup secara berkala, terutama setelah Market Day selesai.</p>`;
     return shell(content);
@@ -383,6 +387,14 @@
         break;
       }
       case 'show-receipt': state.receiptId = id; state.view = 'receipt'; render(); break;
+        case 'clear-history':
+  if (state.transactions.length && window.confirm('Yakin ingin menghapus semua riwayat transaksi?')) {
+    state.transactions = [];
+    writeStore();
+    render();
+    showToast('Semua riwayat berhasil dihapus.');
+  }
+  break;
       case 'new-sale': state.view = 'cashier'; state.payment = null; state.receiptId = null; render(); break;
       case 'print-receipt': window.print(); break;
       case 'export-backup': exportBackup(); break;
